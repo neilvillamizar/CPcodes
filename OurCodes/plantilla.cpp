@@ -20,7 +20,7 @@ typedef vector<int> vi;
 typedef vector<ii> vii;
 
 #define FOR(i,n,m) for(int i=n; i<m; i++)
-#define ROF(i,m,n) for(int i=n; i>m; i--)
+#define ROF(i,n,m) for(int i=n; i>m; i--)
 #define pb push_back
 #define lb lower_bound
 #define ub upper_bound
