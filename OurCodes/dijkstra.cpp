@@ -30,26 +30,49 @@ const int INF = 0x3f3f3f3f;
 /*--------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------*/
 
+const int MAXN = 200005;
+
 struct edge
 {
 	int to,c;
 };
-vector<edge> g[200000];
-int n,p,x,y;
+vector<edge> g[MAXN];
+int n,m,x,y;
+int sp[MAXN];
 
+void dijkstra(){
+	FOR(i,0,n) sp[i]=INF; //inicializa en INF el largo de todos los caminos minimos.
+	priority_queue<int> pq;
+	int v=0;
+	pq.push({0,v});
+	while(!pq.empty()){
+		v=pq.top().S;
+		int dd= -pq.top().F; //mosca con el signo - .
+		pq.pop();
+		if(dd>sp[v]) continue;
+		for(auto e:g[v]){ //relajacion desde el nodo v, a sus vecinos u.
+			int u=e.to,c=e.c;
+			if(sp[v]+c<sp[u]){
+				sp[u]=sp[v]+c;
+				pq.push({-sp[u],u}); //mosca con el signo - .
+		}
+	}
+}
 
 int main(){
 
 	//ios_base::sync_with_stdio(false);
 	//cin.tie(NULL);
 
-	rii(n,p); rii(x,y);
+	rii(n,m); rii(x,y);
 
 	FOR(i,0,p){
 		riii(a,b,c);
 		g[a].pb({b,c});
 		g[b].pb({a,c});
 	}
+
+	dijkstra();
 
 	
 	return 0;
