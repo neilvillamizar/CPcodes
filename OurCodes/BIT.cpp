@@ -8,6 +8,6 @@ ll sumBIT(int p){
 }
 void updBIT(int p, ll val){
     p++;
-    for(; p<MAXN; p+=(p&-p)) 
+    for(; p<MAXN; p+=(p&-p))   //MOSCA con el limite MAXN (debe ser n+1)
         BIT[p]+=val;
 }
