@@ -21,7 +21,7 @@ void dfs(int v, int p, bool keep){
         if(u != p && u != bigC)
             dfs(u,v,0);
     if(bigC != -1)
-        dfs(bigC,v,1);
+        dfs(bigC,v,1),vec[v]=vec[bigC]; 
     else
         vec[v] = new vi ();
     vec[v]->pb(v);
