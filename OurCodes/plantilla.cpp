@@ -32,6 +32,8 @@ typedef vector<ii> vii;
 #define lri(a) scanf("%lld",&a)
 #define lrii(a,b) scanf("%lld %lld",&a,&b)
 #define ms(obj,val) memset(obj,val,sizeof(obj))
+#define debug true
+#dprintf debug && printf
 
 const int INF = 0x3f3f3f3f;
 const ll INFLL = 1e18;
