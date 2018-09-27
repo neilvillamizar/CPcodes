@@ -1,0 +1,3 @@
+el comando 
+for i in {a..j}; do cp template.cpp $i.cpp; done
+crea varias copias de la plantilla con nombres a.cpp, b.cpp,...
