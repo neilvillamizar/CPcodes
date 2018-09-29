@@ -7,7 +7,7 @@ double inters(line l1, line l2){
     return 1.0*(l1.b-l2.b)/(l2.m-l1.m);
 }
 
-//Se deben agregar las rectas en orden decreciente (o creciente para min) de pendiente m
+//Se deben agregar las rectas en orden decreciente (Upper Hull) o creciente (Lower Hull) de m 
 void add(line l){
     int n=v.size();
     if(n<2) {v.pb(l); return;}
