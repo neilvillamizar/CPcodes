@@ -1,5 +1,6 @@
 struct SEG{
     int l, r, val; //etc, etc.
+    //represents segment [l,r) !!!!!!
 };
 
 int A[MAXN];
