@@ -1,6 +1,6 @@
 // A enumerado de 1 a A
 // B enumerado de A+1 a A+B < MAXN
-vi G[MAXN]; //arcos A->B
+vi G[MAXN]; //arcos A->B  //clear G for several test cases
 int A, B, match[MAXN], dist[MAXN];
 bool bfs() {
 	queue<int> q;
