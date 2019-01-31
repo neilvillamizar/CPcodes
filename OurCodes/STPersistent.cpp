@@ -16,7 +16,7 @@ int N, M;
 void STB(STNP& root, int l = 0, int r = N){
     if(!root) root = new STN();
     if(l == r-1){ 
-        root->val = 0;
+        root->val = A[l];
         return;
     }
     int mid = (l+r)/2;
@@ -46,4 +46,13 @@ void STU(STNP& last, STNP& curr, int p, int delt, int l = 0, int r = N){
         STU(last->r, curr->r, p, delt, mid, r);
     }
     curr->val = val(curr->l) + val(curr->r);
+}
+
+//Query
+int STQ(STNP root, int l, int r, int cl = 0, int cr = N){
+    if(l == cl && r == cr) return root->val;
+    int mid = (cl + cr)>>1;
+    if(r <= m) return STQ(root->l, l, r, cl, mid);
+    if(l >= m) return STQ(root->r, l, r, mid, cr);
+    return STQ(root->l, l, mid, cl, mid) + STQ(root->r, mid, r, mid, cr); 
 }
