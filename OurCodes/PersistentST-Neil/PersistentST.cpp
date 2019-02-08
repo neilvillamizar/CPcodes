@@ -1,36 +1,81 @@
-struct SEG{
-    int l, r, val; //etc, etc.
-    //represents segment [l,r) !!!!!!
+
+int n;
+
+struct STN{
+    STN* l, r;
+    int Le,Ri,val;
+    //represents segment [L,R] !!!!!!
+    STN(int le=0, int ri=n-1, int value=0, STN* X1=NULL, STN* X2=NULL){
+    	val=value;
+    	Le = le;
+    	Ri = ri;
+    	l = X1;
+    	r = X2;
+    }
 };
 
+typedef STN*  STNP
+
+//input array
 int A[MAXN];
-SEG ST[4*MAXN];
+//roots of all versions.
+STNP STROOT[MAXN];
 
-SEG merge(SEG L, SEG R){
+STN merge(STN L, STN R){
     //Can do anything you need here
-    return {L.l, R.r, max(L.val,R.val)};
+    return {L.l, R.r, L.Le, R.Ri, max(L.val,R.val)};
 }
 
-void build(int l, int r, int id){
-    if(l == r-1) {ST[id] = {l, r, A[l]}; return;}
-    build(l, (l+r)/2, id<<1);
-    build((l+r)/2, r, id<<1|1);
-    ST[id] = merge(ST[id<<1], ST[id<<1|1]);
+
+//Construct version 0. O(nlogn).
+void STB(STNP v){
+	int L = v->Le, R = v->Ri;
+	if(L==R){
+		v->val = A[L];
+		return;
+	}
+	int mid = (L+R)/2;
+	v->l = new STN(L,mid);
+	v->r = new STN(mid+1,R);
+	STB(v->l);
+	STB(v->r);
+	v = merge(v->l, v->r);
 }
 
-SEG query(int l, int r, int id){
-    int cl = ST[id].l, cr = ST[id].r;
-    int m = (cl + cr)/2;
-    if(cl == l && cr == r) return ST[id];
-    if(r <= m) return query(l, r, id<<1);
-    if(l >= m) return query(l, r, id<<1|1);
-    return merge(query(l, m, id<<1), query(m, r, id<<1|1));
+
+//Upgrade to new version. O(logn).
+void STU(STNP prev, STNP cur, int p, int val){
+	
+	int L = cur->Le, R = cur->Ri;
+
+    if (L == R){ 
+        cur->val = val; 
+        return; 
+    }
+
+    int mid = (L+R) / 2; 
+    if (p <= mid){ 
+        cur->r = prev->r; 
+        cur->l = new STN(L,mid); 
+        STU(prev->l,cur->l, p, val); 
+    }else{ 
+        cur->l = prev->l; 
+        cur->r = new STN(mid+1,R); 
+        STU(prev->r, cur->r, p, val); 
+    } 
+  
+    cur = merge(cur->l, cur->r);
 }
 
-void upd(int p, int val, int id){
-    int l = ST[id].l, r = ST[id].r, m = (l+r)/2;
-    if(l == r-1) {ST[id] = {l, r, val}; return;}
-    if(p < m) upd(p, val, id<<1);
-    else upd(p, val, id<<1|1);
-    ST[id] = merge(ST[id<<1], ST[id<<1|1]);
-}
+//Do a query in version of root v.
+STN STQ(STNP v, int le, int ri){
+	int L = v->Le, R = v->Ri;
+
+    if (le == L and R == ri) 
+       return v; 
+   	int mid = (L+R)/2;
+   	if(ri <= mid) return STQ(v->l,le,ri);
+   	if(le >= mid) return STQ(v->r,le,ri);
+
+    return merge(STQ(v->l,le,mid),STQ(v->r,mid+1,ri)); 
+} 
