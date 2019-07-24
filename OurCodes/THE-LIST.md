@@ -7,7 +7,7 @@
   <summary>Click to expand!</summary>
 
    - Convex Hull Trick
- 	- Aqui va un problema :+1: :-1: :-1:
+      - Aqui va un problema :+1: :-1: :-1:
    - D&C
    - Knuth Optimization
 </details>
@@ -34,26 +34,26 @@
   <summary>Click to expand!</summary>
      
    - Transversal
-    + DFS
-    + BFS
+    - DFS
+    - BFS
    - Shortest Path
-    + Floyd Warshall
-    + DijkstrA
+    - Floyd Warshall
+    - DijkstrA
    - DP on DAG
    - Flow
-    + Max Flow
-    + Max Flow-Min Cost
+    - Max Flow
+    - Max Flow-Min Cost
    - Bipartite matching 
    - Trees
-    + MST
-    + LCA
-    + HLD
-    + Centroid Decomposition
+    - MST
+    - LCA
+    - HLD
+    - Centroid Decomposition
    - Dilworth's theorem
    - DSU
    - Conectividad
-    + Bridges
-    + Articulation points
+    - Bridges
+    - Articulation points
 </details>
 
 ### Data Structures:
@@ -61,10 +61,10 @@
   <summary>Click to expand!</summary>
 
    - Fundamentals
-    + Map
-    + Set
-    + Stack
-    + Queue
+    - Map
+    - Set
+    - Stack
+    - Queue
    - Treaps
    - Implicit Treaps
    - BIT
