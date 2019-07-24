@@ -5,7 +5,7 @@
 ### Dynamic Programming Optimizations:   
 
  -Convex Hull Trick
- - <aqui va un problema> [x] [] [] (<- ejemplo de checks)
+ - aqui va un problema [x] [] []
  -D&C
  -Knuth Optimization
 
