@@ -4,10 +4,10 @@
 
 ### Dynamic Programming Optimizations:   
 
- -Convex Hull Trick
- - aqui va un problema [x] [] []
- -D&C
- -Knuth Optimization
+ - Convex Hull Trick
+ 	- Aqui va un problema [x]\ []\ []\
+ - D&C
+ - Knuth Optimization
 
 ### Number Theory (Like, everything. Hay que buscar una sublista de esto)
 
